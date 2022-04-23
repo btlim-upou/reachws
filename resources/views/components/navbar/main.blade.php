@@ -2,7 +2,8 @@
 
     <!-- App Logo -->
     <div class="navbar-brand-box">
-        <a href="javascript:" class="logo logo-dark mt-3">
+        {{-- <a href="javascript:" class="logo logo-dark mt-3"> --}}
+        <a href="{{ route('home') }}" class="logo logo-dark mt-3">
 {{--            <img class="logo-sm" src="/assets/images/brand/reach-32.png">--}}
             <img class="logo-sm" src="{{ asset('assets/images/brand/reach-32.png') }}">
         </a>

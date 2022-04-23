@@ -47,16 +47,16 @@
         <!-- Chat Rooms -->
         <div class="p-4 profile-desc" data-simplebar>
             <div>
-                    @foreach($rooms as $room)
+                    @foreach($all_rooms as $room)
                 <div class="d-flex py-2">
-                        <a href="/room/{{ $room->room_id }}">
+                        <a href="/room/{{ $room->id }}">
                             <div class="d-flex align-items-center">
                                 <div class="chat-user-img online align-self-center me-2 ms-0">
                                     <img src="{{ asset('assets/images/room-placeholder.png') }}" class="rounded-circle avatar-xs" alt="">
                                     <span class="user-status"></span>
                                 </div>
                                 <div class="overflow-hidden">
-                                    <p class="text-truncate mb-0">{{ $room->room_name }}</p>
+                                    <p class="text-truncate mb-0">{{ $room->name }}</p>
                                 </div>
                             </div>
                         </a>
@@ -69,7 +69,8 @@
 
             <!-- Edit User -->
             <div class="text-center mt-4">
-                <a href="javascript:" class="text-primary pr-2">Create Room</a>
+                {{-- <a href="javascript:" class="text-primary pr-2">Create Room</a> --}}
+                <a href="/create-room" class="text-primary pr-2">Create Room</a>
             </div>
 
         </div>

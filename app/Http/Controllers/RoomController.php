@@ -19,12 +19,21 @@ class RoomController extends Controller
 {
     public function roomMessages($room_id) {
         $user = User::where('id', '=', Session::get('loginId'))->first();
-        $members = DB::select('select * from view_room_members where room_id='.$room_id.' and user_id != ' . Session::get('loginId'));
-        $rooms = DB::select('select * from view_room_members where user_id='.$user->id.'');
+        $members = DB::select('select * from view_room_members where room_id='.$room_id.' and user_id != ' . $user->id);
+        $is_member = RoomUser::where('room_id',$room_id)->where('user_id',$user->id)->count();
+        if($is_member == 0) {
+            $new_room_user = new RoomUser();
+            $new_room_user->room_id = $room_id;
+            $new_room_user->user_id = $user->id;
+            $new_room_user->status_id = 1;
+            $res_new_member = $new_room_user->save();
+        }
+        $all_rooms = Room::all();
         $room = Room::find($room_id);
         $messages = DB::select('select * from view_room_messages where room_id='.$room_id.' order by id');
-        broadcast(new WebSocketDemoEvent('some data, Greeting! Hello World!'));
-        return view('room', compact('user','members', 'room', 'rooms','messages'));
+        $rooms = DB::select('select * from view_room_members where user_id='.$user->id.'');
+        // broadcast(new WebSocketDemoEvent('some data, Greeting! Hello World!'));
+        return view('room', compact('user','members', 'room', 'rooms','messages','all_rooms'));
     }
 
     public function sendMessage(Request $request) {
@@ -74,11 +83,12 @@ class RoomController extends Controller
     public function rooms() {
         $user = User::where('id', '=', Session::get('loginId'))->first();
 //        $members = DB::select('select * from view_room_members where RoomId=1 and UserId != ' . Session::get('loginId'));
+        $all_rooms = Room::all();
         $rooms = Room::all();
 //        $result = DB::select('select * from view_room_messages where Roomid=1 order by Id');
 
 
-        return view('rooms', compact('rooms', 'user'));
+        return view('rooms', compact('rooms', 'user', 'all_rooms'));
 
     }
 

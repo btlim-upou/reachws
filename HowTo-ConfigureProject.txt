@@ -1,0 +1,50 @@
+Instruction for setting up your Laravel Project
+================================================
+
+1. In the terminal window, go to the project directory.
+
+# cd reachws
+
+2. Login to mysql and create the database. 
+
+# mysql -u root -p 
+(enter the password)
+
+Once logged in, execute the reachdb.sql script to create the reachdb database. 
+
+source reachdb.sql
+
+3. Edit the .env file to specify database connection. 
+
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=reachdb207
+DB_USERNAME=username_here
+DB_PASSWORD=password_here
+
+
+4. Execute the following commands in the current directory of the project.
+
+composer update
+
+npm install 
+
+
+5. To start the websocket service, execute the following command.
+
+php artisan websocket:serve 
+
+
+6. To start the Laravel project, execute the following command.
+
+php artisan serve 
+
+
+7. Login to web browser: http://127.0.0.1/8000. Create 2 or more session using different browsers (Chrome, Edge, Firefox, and using incognito or private session)
+
+8. User names for testing. 
+
+bkenlim@yahoo.com/password2
+qhill@example.org/password
+ireichert@example.org/password 
+

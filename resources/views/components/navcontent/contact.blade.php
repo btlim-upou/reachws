@@ -69,7 +69,7 @@
             </div>
 
             <div class="text-center mt-4">
-                <a href="/create-room" class="text-primary pr-2">Create Rooms</a>
+                <a href="/create-room" class="text-primary pr-2">Create Room</a>
             </div>
         </div>
     </div>

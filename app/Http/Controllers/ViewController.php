@@ -90,6 +90,7 @@ class ViewController extends Controller
     {
         $user = User::where('id', '=', Session::get('loginId'))->first();
         $rooms = DB::select('select * from view_room_members where user_id='.$user->id.'');
-        return view('home', ['user' => $user, 'rooms' => $rooms]);
+        $all_rooms = Room::all();
+        return view('home', ['user' => $user, 'rooms' => $rooms, 'all_rooms' => $all_rooms]);
     }
 }

@@ -14,7 +14,7 @@ use App\Models\Message;
 Use Illuminate\Http\Request;
 
 // View Routes
-Route::get('/', [ViewController::class, 'showHome'])->middleware(RedirectToLogin::class);
+Route::get('/', [ViewController::class, 'showHome'])->middleware(RedirectToLogin::class)->name('home');
 Route::get('/login', [ViewController::class, 'showLogin'])->middleware(RedirectToHome::class);
 Route::get('/register', [ViewController::class, 'showRegister'])->middleware(RedirectToHome::class);
 Route::get('/logout', [ViewController::class, 'showLogout'])->name('logout-user')->middleware(RedirectToLogin::class);
