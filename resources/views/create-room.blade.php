@@ -72,15 +72,15 @@
 
                             </form>
                             
-                            <div class="mt-4 text-center text-muted" title="Cancel">
+                            <div class="mt-4 text-center text-muted" title="Home">
                                 <p>
                                     <a href="/" class="fw-medium text-decoration-underline"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" title="Cancel">
-                                        Cancel
+                                    data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" title="Home">
+                                        Home
                                     </a>
                                 </p>
                             </div> 
-                            <div class="mt-4 text-center text-muted" title="Cancel">
+                            <div class="mt-4 text-center text-muted" title="Add Member">
                                 <p>
                                     <a href="/add-room-member" class="fw-medium text-decoration-underline"
                                     data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" title="Click to to add member">

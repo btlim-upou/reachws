@@ -118,11 +118,11 @@
                                         Update
                                     </button>
                                 </div>
-                                <div class="mt-4 text-center text-muted" title="Cancel">
+                                <div class="mt-4 text-center text-muted" title="Home">
                                 <p>
                                     <a href="/" class="fw-medium text-decoration-underline"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" title="Cancel">
-                                        Cancel
+                                    data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" title="Home">
+                                        Home
                                     </a>
                                 </p>
                             </div>    

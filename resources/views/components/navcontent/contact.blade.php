@@ -51,14 +51,14 @@
 
                     <li id="contact-id-1" data-name="direct-message">
                         @foreach($rooms as $room)
-                        <a href="/room/{{ $room->id }}">
+                        <a href="/room/{{ $room->room_id }}">
                           <div class="d-flex align-items-center">
                             <div class="chat-user-img online align-self-center me-2 ms-0">
                               <img src="{{ asset('assets/images/user-placeholder.png') }}" class="rounded-circle avatar-xs" alt="">
                               <span class="user-status"></span>
                             </div>
                             <div class="overflow-hidden">
-                              <p class="text-truncate mb-0">{{ $room->name }}</p>
+                              <p class="text-truncate mb-0">{{ $room->room_name }}</p>
                             </div>
                           </div>
                         </a>

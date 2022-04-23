@@ -20,7 +20,7 @@ class RoomController extends Controller
     public function roomMessages($room_id) {
         $user = User::where('id', '=', Session::get('loginId'))->first();
         $members = DB::select('select * from view_room_members where room_id='.$room_id.' and user_id != ' . Session::get('loginId'));
-        $rooms = Room::all();
+        $rooms = DB::select('select * from view_room_members where user_id='.$user->id.'');
         $room = Room::find($room_id);
         $messages = DB::select('select * from view_room_messages where room_id='.$room_id.' order by id');
         broadcast(new WebSocketDemoEvent('some data, Greeting! Hello World!'));
@@ -84,19 +84,25 @@ class RoomController extends Controller
 
     public function createRoom(Request $req)
     {
-        $req->validate([
+        $req->validate([      
             'room_name'=>'required|max:50',
             'description'=>'required|max:100',
         ]);
 
         $room = new Room();
-
+        $roomuser = new RoomUser();
+       
         $room->name = $req->room_name;
-        $room->description = $req->description;
-
+        $room->description = $req->description;      
         $res = $room->save();
 
-        return back()->with("status", "added successfully");
+        $new_room = Room::where('name', '=', $req->room_name)->first();
+        $roomuser->room_id = $new_room->id;
+        $roomuser->user_id = Session::get('loginId');
+        $roomuser->status_id = 1;
+        $res2 = $roomuser->save();
+
+        return back()->with("success", "added successfully");
     }
 
     public function createRoomUser()
@@ -111,20 +117,18 @@ class RoomController extends Controller
     }
     public function addmember(Request $req)
     {
-        $req->validate([
+        $req->validate([      
             'room_name'=>'required',
             'member_name'=>'required',
         ]);
-
-        $roomuser = new RoomUser();
-
+       
+        $roomuser = new RoomUser();       
         $roomuser->room_id = $req->room_name;
         $roomuser->user_id = $req->member_name;
-        $roomuser->status_id = 1;
-
+        $roomuser->status_id = 1;  
         $res = $roomuser->save();
 
-        return back()->with("status", "added successfully");
+        return back()->with("success", "added successfully");
     }
     public function addRoomUser()
     {

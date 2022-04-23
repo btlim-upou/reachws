@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Room;
 use Hash;
@@ -88,7 +89,7 @@ class ViewController extends Controller
     public function showHome()
     {
         $user = User::where('id', '=', Session::get('loginId'))->first();
-        $rooms = Room::all();
+        $rooms = DB::select('select * from view_room_members where user_id='.$user->id.'');
         return view('home', ['user' => $user, 'rooms' => $rooms]);
     }
 }
