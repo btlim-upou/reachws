@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `reachdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `reachdb`;
+USE `reach444`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: reachdb
+-- Host: 127.0.0.1    Database: reach444
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -165,13 +165,13 @@ INSERT INTO `rooms` VALUES (1,'Rooms for Rent','Room rental inquiry',1,NULL,NULL
 UNLOCK TABLES;
 
 --
--- Table structure for table `status`
+-- Table structure for table `Status`
 --
 
-DROP TABLE IF EXISTS `status`;
+DROP TABLE IF EXISTS `Status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `status` (
+CREATE TABLE `Status` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
@@ -179,23 +179,23 @@ CREATE TABLE `status` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `status`
+-- Dumping data for table `Status`
 --
 
-LOCK TABLES `status` WRITE;
-/*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (1,'ACTIVE'),(2,'PENDING'),(3,'DELETED');
-/*!40000 ALTER TABLE `status` ENABLE KEYS */;
+LOCK TABLES `Status` WRITE;
+/*!40000 ALTER TABLE `Status` DISABLE KEYS */;
+INSERT INTO `Status` VALUES (1,'ACTIVE'),(2,'PENDING'),(3,'DELETED');
+/*!40000 ALTER TABLE `Status` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `User`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `User`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
+CREATE TABLE `User` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -216,13 +216,13 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `User`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'111111@test.com','Test','Test','','Test','$2y$10$qLOcqYm3TkzJrDb5GQYNV.fJi1wkmFMfsm8jsfj2eLn2WUSQisna2','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:46:38','2022-04-05 11:46:38',NULL,NULL),(2,'test@test.com','Lein','Lein','','Lein','$2y$10$1tya4HeL7hAOd2qEk/VGC.myrnaWJ747rsob6u1xkhOaVl3/qHMj6','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:48:12','2022-04-05 11:48:12',NULL,NULL),(3,'TESTING@TEST.COM','TEST','TEST','','TEST','$2y$10$yjzHM317kjCQKp086t1c7.eccKm4zpy9bR2lRXPr9p9zDijuO6/T2','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:50:03','2022-04-05 11:50:03',NULL,NULL),(4,'ndaugherty@example.net','Johnny','John23','','Doer','$2y$10$ma9Q2OPTVeTeWpM6rCWjB./SBlOiMox.8FXowz5iABHM8JECIhZaO','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:50:22','2022-04-05 11:50:22',NULL,'2UYWlNpoT8ly5XRrz6oOC7wb5I8Gp3CKd83DpUbkLuBvPvAw3mtfl62uDJXG'),(5,'JAZZ@JAZZ.com','Jazz','Jazz','','Jazz','$2y$10$cbrgOFbTdUTpYLAu.P6SJuMsaK8JLtSYO5mMzkRuMMIiXDM8POfG2','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:52:14','2022-04-05 11:52:14',NULL,NULL),(6,'chantaljane@gmail.com','Chantal Jane','chantz','','Mendoza','$2y$10$IE4E3xVffGJEOL.gu0M8Vulo4azBBgfgbSW8Net2lR5fhiAU33WJa','/assets/images/user-placeholder.png',0,1,'2022-04-05 13:16:25','2022-04-05 13:16:25',NULL,NULL),(7,'haha@haha.com','Haha','Haha','','Haha','$2y$10$ufTqj2NEk/noUzuJMsQS2.MS7LgsIKwTjkV1MgJxx7YfA2Grgtody','/assets/images/user-placeholder.png',0,1,'2022-04-05 13:24:05','2022-04-05 13:24:05',NULL,NULL),(8,'dave.infante@g.c','test','test','','test','$2y$10$8AO8Nxp2q0zW3burwBCqgOkRpp6oneNTBsq3uVWIXz7Q0t7SHlLtS','/assets/images/user-placeholder.png',0,1,'2022-04-06 02:49:23','2022-04-06 02:49:23',NULL,NULL),(9,'gaypotato1990@gmail.com','Gerardsssss','Gerard','Yotoko','Potato','$2y$10$y2tgMlnYR/DtJW4ptQy/kuws6JJbnOBjgeSpnCvFuLJtuuYq8xe0y','/assets/images/user-placeholder.png',0,1,'2022-04-06 02:54:03','2022-04-06 02:54:03',NULL,NULL),(10,'qhill@example.org','Marie June','Marie Jane','Stiedemahoff','McGoodwin','$2y$10$ma9Q2OPTVeTeWpM6rCWjB./SBlOiMox.8FXowz5iABHM8JECIhZaO','/assets/images/user-placeholder.png',0,1,'2022-04-06 15:00:22','2022-04-06 15:00:22',NULL,NULL),(11,'ireichert@example.org','Andy','AndySS','VV','Ramos','$2y$10$DNOSeYqdBK7pRfWGERIM0OZLY9Ca4F3OsnLxb0kX9JM9gwKYsT1Pq','/assets/images/user-placeholder.png',0,1,'2022-04-06 16:26:34','2022-04-06 16:26:34',NULL,NULL),(12,'leni@yahoo.com','Leni','Leni--RR','','RR','$2y$10$s6q8RGzkPrjJ8hJtxfzxsub9V5hBkJ1d72oFhNnfimXA7K8GWF99i','/assets/images/user-placeholder.png',0,1,'2022-04-07 02:02:53','2022-04-07 02:02:53',NULL,NULL),(13,'test@g.c','test','test','','test','$2y$10$UYu7d/nWYVAsY4kTE1pOF./02puO3VHa14S36WNHlSL94brpvM7AC','/assets/images/user-placeholder.png',0,1,'2022-04-08 22:05:35','2022-04-08 22:05:35',NULL,'A83kBXJQiNoE7HGKQEKayyed17u2SuxsGD9BDxYxEAx24lpsIre5IeSHIC5c'),(14,'daveinfante95@gmail.com','dave','dave','','infante','$2y$10$rG8HcmqIDfeT8DHLc83/D.obyDqdVNPn9/3xaQbAhKGUPJVmV9iQm','/assets/images/user-placeholder.png',0,1,'2022-04-08 22:05:59','2022-04-08 22:05:59',NULL,'FBQFHLR09nNTaGHuxijcyRfr4Scs038PRUAtuXC2D0LDs9trp9YYmhfeAk88'),(15,'dave.infante@gmail.com','dave','dave','','infante','$2y$10$NPILzZLoYq0wYlnVKeI4Y.fm68uOWprqVaEUKgR.cLQgqxmCoTQx6','/assets/images/user-placeholder.png',0,1,'2022-04-08 22:18:41','2022-04-08 22:18:41',NULL,'BmiGTAwZCZ9pkkdcUSICQusKCTIXCbgrH95si3QB1ndTTxtgmcqA7Jq6aRnb'),(16,'dave.infante95@gmail.com','test','test','','test','$2y$10$8Z1vX9hXUgZ9TgW7iuZ1Tu3dBRKDaQzfBClfnwoRReuwn61zz/VV2','/assets/images/user-placeholder.png',0,1,'2022-04-08 22:35:27','2022-04-08 22:35:27',NULL,'p3JvBewcCMeY7gAtSMppipqA4KVVpfpEIecPJ6ihXyitHtw1GdmP4mVjgJwZ'),(17,'t@y.c','test','test','','test','$2y$10$Gt5la/hUUR5GoP0Zna.hROhgqL1NsNOtgE7CYGrL8/A//RJ7n3y6K','/assets/images/user-placeholder.png',0,1,'2022-04-09 04:41:28','2022-04-09 04:41:28',NULL,NULL),(18,'test123@test.com','Test','Test','','Test','$2y$10$PSF/rUquuELlLdERtDopM.sTH0nhAUVcM.c1Rj5uz8J6hhrJPdAoS','/assets/images/user-placeholder.png',0,1,'2022-04-16 06:07:13','2022-04-16 06:07:13',NULL,NULL),(19,'bkenlim@yahoo.com','Bernard','BerLim','T','Lim','$2y$10$aSYLCtSeF3MoEppTfispIO5iP4BKTuRHMhKzxMLjiF/3ko15Wbvgm','/assets/images/user-placeholder.png',0,1,'2022-04-16 07:29:58','2022-04-16 07:29:58',NULL,NULL);
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `User` WRITE;
+/*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` VALUES (1,'111111@test.com','Test','Test','','Test','$2y$10$qLOcqYm3TkzJrDb5GQYNV.fJi1wkmFMfsm8jsfj2eLn2WUSQisna2','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:46:38','2022-04-05 11:46:38',NULL,NULL),(2,'test@test.com','Lein','Lein','','Lein','$2y$10$1tya4HeL7hAOd2qEk/VGC.myrnaWJ747rsob6u1xkhOaVl3/qHMj6','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:48:12','2022-04-05 11:48:12',NULL,NULL),(3,'TESTING@TEST.COM','TEST','TEST','','TEST','$2y$10$yjzHM317kjCQKp086t1c7.eccKm4zpy9bR2lRXPr9p9zDijuO6/T2','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:50:03','2022-04-05 11:50:03',NULL,NULL),(4,'ndaugherty@example.net','Johnny','John23','','Doer','$2y$10$ma9Q2OPTVeTeWpM6rCWjB./SBlOiMox.8FXowz5iABHM8JECIhZaO','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:50:22','2022-04-05 11:50:22',NULL,'2UYWlNpoT8ly5XRrz6oOC7wb5I8Gp3CKd83DpUbkLuBvPvAw3mtfl62uDJXG'),(5,'JAZZ@JAZZ.com','Jazz','Jazz','','Jazz','$2y$10$cbrgOFbTdUTpYLAu.P6SJuMsaK8JLtSYO5mMzkRuMMIiXDM8POfG2','/assets/images/user-placeholder.png',0,1,'2022-04-05 11:52:14','2022-04-05 11:52:14',NULL,NULL),(6,'chantaljane@gmail.com','Chantal Jane','chantz','','Mendoza','$2y$10$IE4E3xVffGJEOL.gu0M8Vulo4azBBgfgbSW8Net2lR5fhiAU33WJa','/assets/images/user-placeholder.png',0,1,'2022-04-05 13:16:25','2022-04-05 13:16:25',NULL,NULL),(7,'haha@haha.com','Haha','Haha','','Haha','$2y$10$ufTqj2NEk/noUzuJMsQS2.MS7LgsIKwTjkV1MgJxx7YfA2Grgtody','/assets/images/user-placeholder.png',0,1,'2022-04-05 13:24:05','2022-04-05 13:24:05',NULL,NULL),(8,'dave.infante@g.c','test','test','','test','$2y$10$8AO8Nxp2q0zW3burwBCqgOkRpp6oneNTBsq3uVWIXz7Q0t7SHlLtS','/assets/images/user-placeholder.png',0,1,'2022-04-06 02:49:23','2022-04-06 02:49:23',NULL,NULL),(9,'gaypotato1990@gmail.com','Gerardsssss','Gerard','Yotoko','Potato','$2y$10$y2tgMlnYR/DtJW4ptQy/kuws6JJbnOBjgeSpnCvFuLJtuuYq8xe0y','/assets/images/user-placeholder.png',0,1,'2022-04-06 02:54:03','2022-04-06 02:54:03',NULL,NULL),(10,'qhill@example.org','Marie June','Marie Jane','Stiedemahoff','McGoodwin','$2y$10$ma9Q2OPTVeTeWpM6rCWjB./SBlOiMox.8FXowz5iABHM8JECIhZaO','/assets/images/user-placeholder.png',0,1,'2022-04-06 15:00:22','2022-04-06 15:00:22',NULL,NULL),(11,'ireichert@example.org','Andy','AndySS','VV','Ramos','$2y$10$DNOSeYqdBK7pRfWGERIM0OZLY9Ca4F3OsnLxb0kX9JM9gwKYsT1Pq','/assets/images/user-placeholder.png',0,1,'2022-04-06 16:26:34','2022-04-06 16:26:34',NULL,NULL),(12,'leni@yahoo.com','Leni','Leni--RR','','RR','$2y$10$s6q8RGzkPrjJ8hJtxfzxsub9V5hBkJ1d72oFhNnfimXA7K8GWF99i','/assets/images/user-placeholder.png',0,1,'2022-04-07 02:02:53','2022-04-07 02:02:53',NULL,NULL),(13,'test@g.c','test','test','','test','$2y$10$UYu7d/nWYVAsY4kTE1pOF./02puO3VHa14S36WNHlSL94brpvM7AC','/assets/images/user-placeholder.png',0,1,'2022-04-08 22:05:35','2022-04-08 22:05:35',NULL,'A83kBXJQiNoE7HGKQEKayyed17u2SuxsGD9BDxYxEAx24lpsIre5IeSHIC5c'),(14,'daveinfante95@gmail.com','dave','dave','','infante','$2y$10$rG8HcmqIDfeT8DHLc83/D.obyDqdVNPn9/3xaQbAhKGUPJVmV9iQm','/assets/images/user-placeholder.png',0,1,'2022-04-08 22:05:59','2022-04-08 22:05:59',NULL,'FBQFHLR09nNTaGHuxijcyRfr4Scs038PRUAtuXC2D0LDs9trp9YYmhfeAk88'),(15,'dave.infante@gmail.com','dave','dave','','infante','$2y$10$NPILzZLoYq0wYlnVKeI4Y.fm68uOWprqVaEUKgR.cLQgqxmCoTQx6','/assets/images/user-placeholder.png',0,1,'2022-04-08 22:18:41','2022-04-08 22:18:41',NULL,'BmiGTAwZCZ9pkkdcUSICQusKCTIXCbgrH95si3QB1ndTTxtgmcqA7Jq6aRnb'),(16,'dave.infante95@gmail.com','test','test','','test','$2y$10$8Z1vX9hXUgZ9TgW7iuZ1Tu3dBRKDaQzfBClfnwoRReuwn61zz/VV2','/assets/images/user-placeholder.png',0,1,'2022-04-08 22:35:27','2022-04-08 22:35:27',NULL,'p3JvBewcCMeY7gAtSMppipqA4KVVpfpEIecPJ6ihXyitHtw1GdmP4mVjgJwZ'),(17,'t@y.c','test','test','','test','$2y$10$Gt5la/hUUR5GoP0Zna.hROhgqL1NsNOtgE7CYGrL8/A//RJ7n3y6K','/assets/images/user-placeholder.png',0,1,'2022-04-09 04:41:28','2022-04-09 04:41:28',NULL,NULL),(18,'test123@test.com','Test','Test','','Test','$2y$10$PSF/rUquuELlLdERtDopM.sTH0nhAUVcM.c1Rj5uz8J6hhrJPdAoS','/assets/images/user-placeholder.png',0,1,'2022-04-16 06:07:13','2022-04-16 06:07:13',NULL,NULL),(19,'bkenlim@yahoo.com','Bernard','BerLim','T','Lim','$2y$10$aSYLCtSeF3MoEppTfispIO5iP4BKTuRHMhKzxMLjiF/3ko15Wbvgm','/assets/images/user-placeholder.png',0,1,'2022-04-16 07:29:58','2022-04-16 07:29:58',NULL,NULL);
+/*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -295,7 +295,7 @@ LOCK TABLES `websockets_statistics_entries` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'reachdb'
+-- Dumping routines for database 'reach444'
 --
 
 --
@@ -310,7 +310,7 @@ UNLOCK TABLES;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50001 VIEW `view_room_members` AS select `rm`.`room_id` AS `room_id`,`rm`.`user_id` AS `user_id`,`r`.`name` AS `room_name`,`u`.`nick_name` AS `nick_name`,`u`.`first_name` AS `first_name`,`u`.`last_name` AS `last_name`,`u`.`email` AS `email` from ((`room_user` `rm` join `rooms` `r`) join `user` `u`) where ((`rm`.`room_id` = `r`.`id`) and (`rm`.`user_id` = `u`.`id`)) */;
+/*!50001 VIEW `view_room_members` AS select `rm`.`room_id` AS `room_id`,`rm`.`user_id` AS `user_id`,`r`.`name` AS `room_name`,`u`.`nick_name` AS `nick_name`,`u`.`first_name` AS `first_name`,`u`.`last_name` AS `last_name`,`u`.`email` AS `email` from ((`room_user` `rm` join `rooms` `r`) join `User` `u`) where ((`rm`.`room_id` = `r`.`id`) and (`rm`.`user_id` = `u`.`id`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -327,7 +327,7 @@ UNLOCK TABLES;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50001 VIEW `view_room_messages` AS select `m`.`id` AS `id`,`m`.`message` AS `message`,`m`.`room_id` AS `room_id`,`r`.`name` AS `room_name`,`m`.`sent_by` AS `sent_by`,`m`.`attachment` AS `attachment`,`u`.`id` AS `user_id`,`u`.`nick_name` AS `nick_name`,`u`.`first_name` AS `first_name`,`u`.`last_name` AS `last_name`,`u`.`email` AS `email`,`m`.`created_at` AS `created_at` from ((`messages` `m` join `user` `u`) join `rooms` `r`) where ((`m`.`sent_by` = `u`.`id`) and (`m`.`room_id` = `r`.`id`)) */;
+/*!50001 VIEW `view_room_messages` AS select `m`.`id` AS `id`,`m`.`message` AS `message`,`m`.`room_id` AS `room_id`,`r`.`name` AS `room_name`,`m`.`sent_by` AS `sent_by`,`m`.`attachment` AS `attachment`,`u`.`id` AS `user_id`,`u`.`nick_name` AS `nick_name`,`u`.`first_name` AS `first_name`,`u`.`last_name` AS `last_name`,`u`.`email` AS `email`,`m`.`created_at` AS `created_at` from ((`messages` `m` join `User` `u`) join `rooms` `r`) where ((`m`.`sent_by` = `u`.`id`) and (`m`.`room_id` = `r`.`id`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
