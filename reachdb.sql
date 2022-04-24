@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `reachdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `reach444`;
+USE `reachdb`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: reach444
+-- Host: 127.0.0.1    Database: reachdb
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -13,7 +13,7 @@ USE `reach444`;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
@@ -295,7 +295,7 @@ LOCK TABLES `websockets_statistics_entries` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'reach444'
+-- Dumping routines for database 'reachdb'
 --
 
 --
