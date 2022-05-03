@@ -2169,10 +2169,53 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var room_id = document.getElementById('room_id');
 var user_id = document.getElementById('user_id');
+var user_name = document.getElementById('user_name_h');
 var message_input = document.getElementById('message_inputbox');
 var message_form = document.getElementById('chatinput-form');
+var chat_feedback = document.getElementById('chat-input-feedback');
 var room_id_value = room_id.innerHTML;
 var user_id_value = user_id.innerHTML;
+var user_name_value = user_name.innerHTML ? user_name.innerHTML : user_name.value;
+message_input.addEventListener('keyup', function (e) {
+  if (message_input.value.length == 0) {
+    var options = {
+      method: 'post',
+      url: '/typing-status',
+      data: {
+        room_id: room_id_value,
+        user_id: user_id_value,
+        user: user_name_value,
+        typing: false
+      }
+    };
+    axios(options); // return ;
+  } else if (message_input.value.length == 1) {
+    var _options = {
+      method: 'post',
+      url: '/typing-status',
+      data: {
+        room_id: room_id_value,
+        user_id: user_id_value,
+        user: user_name_value,
+        typing: true
+      }
+    };
+    axios(_options);
+  }
+});
+window.Echo.channel('reachat.link').listen('.typing-status', function (e) {
+  console.log(e);
+
+  if (room_id_value == e.room_id && user_id_value != e.user_id) {
+    if (e.typing === true) {
+      var status_message = "<i>" + e.user + " is typing...</i>";
+      chat_feedback.innerHTML = status_message;
+      chat_feedback.className = "chat-input-feedback show";
+    } else {
+      chat_feedback.className = "chat-input-feedback";
+    }
+  }
+});
 message_form.addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -2205,7 +2248,11 @@ window.Echo.channel('reachat.link').listen('.message-sent', function (e) {
     $("#chat-conversation .simplebar-content-wrapper").scrollTop($("#chat-conversation .simplebar-content-wrapper").prop("scrollHeight"));
   }
 
-  message_input.value = '';
+  if (room_id_value == e.room_id && user_id_value == e.sender) {
+    message_input.value = '';
+  }
+
+  chat_feedback.className = "chat-input-feedback";
 });
 
 /***/ }),
@@ -2240,11 +2287,12 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: "anyKey",
   // cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-  // forceTLS: true,
-  // encrypted: true,
-  wsHost: window.location.hostname,
+  forceTLS: true,
+  encrypted: true,
+  // wsHost: 'ws.allhumans.one',
+  wsHost: 'reach-demo.ml',
   wsPort: 6001,
-  forceTLS: false,
+  wssPort: 6001,
   disableStats: true
 }); // window.Echo.channel('DemoChannel')
 //     .listen('WebSocketDemoEvent', (e) => {

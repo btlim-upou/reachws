@@ -11,7 +11,10 @@
             <div class="flex-grow-1 overflow-hidden">
                 <div class="d-flex align-items-center">
                     <div class="flex-shrink-0 chat-user-img online user-own-img align-self-center me-3 ms-0">
-                        <img src="{{ asset('assets/images/user-placeholder.png') }}" class="rounded-circle avatar-sm" alt="">
+{{--                        <img src="{{ asset('assets/images/user-placeholder.png') }}" class="rounded-circle avatar-sm" alt="">--}}
+{{--                        <img src="{{ $user->picture }}" class="rounded-circle avatar-sm" alt="">--}}
+                        <img src="{{ asset('/assets/images/background/default-group-image.jpg') }}" class="rounded-circle avatar-sm" alt="">
+
 {{--                        <span class="user-status"></span>--}}
                     </div>
                     <div class="flex-grow-1 overflow-hidden">
@@ -97,7 +100,7 @@
     var user_id = document.getElementById('user_id').innerHTML;
     var new_message = '';
     console.log('room_id: '+room_id);
-    
+
     // var channel = pusher.subscribe('reachat.link');
     // channel.bind('message-sent', function(msg_) {
     window.Echo.channel('reachat.link')

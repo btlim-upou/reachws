@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Hash;
 use Session;
@@ -36,10 +37,10 @@ class UserController extends Controller
         {
             return redirect('login')->with('success', 'User has been registered successfully!');
         }
-        
+
         return back()->with('failed', 'An error has occurred');
     }
-    
+
     // Update User Profile
     public function updateUser(Request $req)
     {
@@ -50,34 +51,44 @@ class UserController extends Controller
             'email'=>'required|max:100|email'
         ]);
 
-        $user; 
+        $user;
+
 
         if (Session::has('user')) {
             $user = Session::get('user');
         }
 
+        $path = '/assets/images/user';
+        $newImageName = time() . '-' . $req->nick_name . '.' . $req->user_photo->extension();
         // Update Profile
         User::whereId($user->id)->update([
             'first_name' => $req->first_name,
             'nick_name' => $req->nick_name,
             'middle_name' => $req->middle_name ?? '',
             'last_name' => $req->last_name,
-            'email' => $req->email
+            'email' => $req->email,
+            'picture' => $path . '/' . $newImageName
         ]);
+        $req->user_photo->move(public_path($path), $newImageName);
+//        $file = Storage::get($req->user_photo);
+//        Storage::put('assets/images/user_photos/'.$req->user_photo, '');
+//        $path = $req->('user_photo')->store('avatars');
+
+
         $user = User::where('id', '=', Session::get('loginId'))->first();
         $req->session()->put('user', $user);
         return back()->with("status", "Updated successfully!");
     }
 
     public function updatePassword(Request $req)
-    {        
+    {
         // Validation
         $req->validate([
             'old_password' => 'required',
             'password' => 'required|min:6|confirmed|different:old_password',
         ]);
 
-        $user; 
+        $user;
 
         if (Session::has('user')) {
             $user = Session::get('user');

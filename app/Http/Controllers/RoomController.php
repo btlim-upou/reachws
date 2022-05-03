@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TypingStatus;
 use App\Events\WebSocketDemoEvent;
 use App\Models\Room;
 use App\Models\RoomUser;
@@ -63,7 +64,7 @@ class RoomController extends Controller
         $message->status_id = 1;
         $message->created_at = $dt;
         $message->updated_at = $dt;
-        
+
         $res = $message->save();
 
         // event(new MessageSent($message, $sender));
@@ -94,16 +95,16 @@ class RoomController extends Controller
 
     public function createRoom(Request $req)
     {
-        $req->validate([      
+        $req->validate([
             'room_name'=>'required|max:50',
             'description'=>'required|max:100',
         ]);
 
         $room = new Room();
         $roomuser = new RoomUser();
-       
+
         $room->name = $req->room_name;
-        $room->description = $req->description;      
+        $room->description = $req->description;
         $res = $room->save();
 
         $new_room = Room::where('name', '=', $req->room_name)->first();
@@ -127,15 +128,15 @@ class RoomController extends Controller
     }
     public function addmember(Request $req)
     {
-        $req->validate([      
+        $req->validate([
             'room_name'=>'required',
             'member_name'=>'required',
         ]);
-       
-        $roomuser = new RoomUser();       
+
+        $roomuser = new RoomUser();
         $roomuser->room_id = $req->room_name;
         $roomuser->user_id = $req->member_name;
-        $roomuser->status_id = 1;  
+        $roomuser->status_id = 1;
         $res = $roomuser->save();
 
         return back()->with("success", "added successfully");
@@ -147,4 +148,22 @@ class RoomController extends Controller
 
         return view('add-room-member', compact('rooms','user'));
     }
+
+    public function typingStatus(Request $request) {
+
+        $user_id = $request->input('user_id');
+        $room_id = $request->input('room_id');
+        event(
+            new TypingStatus(
+                $room_id,
+                $user_id,
+                $request->input('user'),
+                $request->input('typing'),
+            )
+        );
+
+        return ["success" => true];
+
+    }
+
 }

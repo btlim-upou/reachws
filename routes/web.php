@@ -37,18 +37,19 @@ Route::post('/api/update-password', [UserController::class, 'updatePassword'])->
 Route::post('/api/create-room', [RoomController::class, 'createRoom'])->name('create-room');
 Route::post('/api/add-room-member', [RoomController::class, 'addmember'])->name('add-room-member');
 Route::post('/send-message', [RoomController::class, 'sendMessage'])->name('send-message');
+Route::post('/typing-status', [RoomController::class, 'typingStatus'])->name('typing-status');
 
-Route::post('/send-websocket', function(Request $request){
-    event(
-        new MessageSent(
-            $request->input('message'),
-            $request->input('user_id'),
-            $request->input('room_id'),
-        )
-        );
-    return ["success" => true];
+// Route::post('/send-websocket', function(Request $request){
+//     event(
+//         new MessageSent(
+//             $request->input('message'),
+//             $request->input('user_id'),
+//             $request->input('room_id'),
+//         )
+//         );
+//     return ["success" => true];
 
-});
+// });
 
 // Undefined Routes
 //Route::any('/{page?}',function(){ return View::make('error.404'); })->where('page','.*');

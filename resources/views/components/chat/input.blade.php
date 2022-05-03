@@ -19,12 +19,13 @@
                 </div>
                 <div class="col">
                     <div class="position-relative">
-                        <div class="chat-input-feedback">
+                        <div class="chat-input-feedback" id="chat-input-feedback">
                             Please Enter a Message
                         </div>
-                        <input name="message_inputbox" id="message_inputbox" autocomplete="off" type="text" class="form-control form-control-lg chat-input" autofocus id="chat-input" placeholder="Type your message...">
+                        <input name="message_inputbox" id="message_inputbox" autocomplete="off" type="text" class="form-control form-control-lg chat-input" autofocus placeholder="Type your message...">
                         <input type="hidden" name="room_id" id="room_id" value="{{ $room->id }}">
                         <input type="hidden" name="user_id" id="user_id" value="{{ $user->id }}">
+                        <input type="hidden" name="user_name_h" id="user_name_h" value="{{ $user->nick_name }}">
                     </div>
                 </div>
                 <div class="col-auto">

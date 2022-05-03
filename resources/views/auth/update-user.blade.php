@@ -14,9 +14,9 @@
         <div class="authentication-page-content">
             <div class="d-flex flex-column h-100 px-4 pt-4">
                 <div class="row justify-content-center my-auto">
-                    <div class="col-sm-8 col-lg-8 col-xl-9">     
+                    <div class="col-sm-8 col-lg-8 col-xl-9">
                         <div class="py-md-5 py-4">
-                            
+
                              <!-- Header -->
                             <div class="text-center mb-4">
                                 <h3 class="mb-1">Update User</h3>
@@ -26,9 +26,9 @@
                             </div>
 
                             <!-- Input Form -->
-                            <form action="{{route('update-user')}}" method="post">
-                           
-                                
+                            <form action="{{route('update-user')}}" method="post" enctype="multipart/form-data">
+
+
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
@@ -48,9 +48,9 @@
                                     placeholder="Email" value="{{ $user->email }}">
                                     <small class="text-danger">
                                         @error('email') {{ $message }} @enderror
-                                    </small>      
+                                    </small>
                                 </div>
-                                
+
 
                                 <div class="mt-3 text-center">
                                     <div class="signin-other-title">
@@ -67,7 +67,7 @@
                                             placeholder="First Name" value="{{ $user->first_name }}">
                                         <small class="text-danger">
                                             @error('first_name') {{ $message }} @enderror
-                                        </small>  
+                                        </small>
                                     </div>
 
 
@@ -78,7 +78,7 @@
                                             placeholder="Nick Name" value="{{ $user->nick_name }}">
                                         <small class="text-danger">
                                             @error('nick_name') {{ $message }} @enderror
-                                        </small>    
+                                        </small>
                                     </div>
                                 </div>
 
@@ -99,11 +99,20 @@
                                             placeholder="Last name" value="{{ $user->last_name }}">
                                         <small class="text-danger">
                                             @error('last_name') {{ $message }} @enderror
-                                        </small>  
+                                        </small>
                                     </div>
                                 </div>
-                    
-                                
+                                <div class="row">
+
+                                    <!-- Profile Picture -->
+                                    <div class="mb-3" title="Profile picture (optional)">
+                                        <label for="user_photo" class="form-label">Profile picture</label>
+                                        <input name="user_photo" id="user_photo" type="file" class="form-control" >
+                                    </div>
+
+                                </div>
+
+
                                 <div class="text-center my-3">
                                     <div class="signin-other-title">
                                         <h5 class="font-size-14 mb-3 title"></h5>
@@ -125,7 +134,7 @@
                                         Home
                                     </a>
                                 </p>
-                            </div>    
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -136,6 +145,6 @@
 
             </div>
         </div>
-    </div>                 
-</div>  
+    </div>
+</div>
 @endsection

@@ -24,12 +24,13 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.env.MIX_PUSHER_APP_KEY,
     // cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-    // forceTLS: true,
-    // encrypted: true,
-    wsHost: window.location.hostname,
+    forceTLS: true,
+    encrypted: true,
+    // wsHost: 'ws.allhumans.one',
+    wsHost: 'reach-demo.ml',
     wsPort: 6001,
-    forceTLS: false,
-    disableStats: true,
+    wssPort: 6001,
+    disableStats: true
 });
 
 // window.Echo.channel('DemoChannel')
