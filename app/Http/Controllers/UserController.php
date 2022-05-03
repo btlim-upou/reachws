@@ -58,18 +58,23 @@ class UserController extends Controller
             $user = Session::get('user');
         }
 
-        $path = '/assets/images/user';
-        $newImageName = time() . '-' . $req->nick_name . '.' . $req->user_photo->extension();
+        if(strlen($req->user_photo) > 0) {
+            $path = '/assets/images/user';
+            $newImageName = time() . '-' . $req->nick_name . '.' . $req->user_photo->extension();
+            $req->user_photo->move(public_path($path), $newImageName);
+            User::whereId($user->id)->update([ 'picture' => $path . '/' . $newImageName]);
+        }
+
         // Update Profile
         User::whereId($user->id)->update([
             'first_name' => $req->first_name,
             'nick_name' => $req->nick_name,
             'middle_name' => $req->middle_name ?? '',
             'last_name' => $req->last_name,
-            'email' => $req->email,
-            'picture' => $path . '/' . $newImageName
+            'email' => $req->email
         ]);
-        $req->user_photo->move(public_path($path), $newImageName);
+
+
 //        $file = Storage::get($req->user_photo);
 //        Storage::put('assets/images/user_photos/'.$req->user_photo, '');
 //        $path = $req->('user_photo')->store('avatars');
