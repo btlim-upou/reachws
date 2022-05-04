@@ -1,11 +1,15 @@
 <div id="users-chat" class="position-relative">
     <div class="p-3 p-lg-4 user-chat-topbar">
         <div class="d-flex align-items-center">
+            
             <div class="flex-shrink-0 d-block d-lg-none me-3">
-                <a href="javascript: void(0);" class="user-chat-remove font-size-18 p-1">
+                {{-- <a href="javascript: void(0);" class="user-chat-remove font-size-18 p-1"> --}}
+                
+                <a href="{{ route('home') }}" class="user-chat-remove font-size-18 p-1">
                     <i class="bx bx-chevron-left align-middle"></i>
                 </a>
             </div>
+            
             <div id="room_id" style="display:none">{{ $room->id }}</div>
             <div id="user_id" style="display:none">{{ $user->id }}</div>
             <div class="flex-grow-1 overflow-hidden">
@@ -22,6 +26,12 @@
 {{--                        <p class="text-truncate text-muted mb-0"><small>Online</small></p>--}}
                     </div>
                 </div>
+            </div>
+            <div class="">
+                <a href="{{ route('home') }}" class="logo logo-dark mt-3">
+                {{--            <img class="logo-sm" src="/assets/images/brand/reach-32.png">--}}
+                    <img class="logo-sm" src="{{ asset('assets/images/brand/reach-32.png') }}">
+                </a>
             </div>
         </div>
     </div>

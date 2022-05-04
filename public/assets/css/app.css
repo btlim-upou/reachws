@@ -1191,7 +1191,7 @@ body[data-layout-mode="dark"] .chat-call-list li, body[data-layout-mode="dark"] 
     right: 0;
     background-color: transparent;
     opacity: 0.1; }
-  @media (max-width: 991.98px) {
+  /* @media (max-width: 991.98px) {
     .user-chat {
       position: fixed;
       left: 0;
@@ -1205,16 +1205,16 @@ body[data-layout-mode="dark"] .chat-call-list li, body[data-layout-mode="dark"] 
       .user-chat.user-chat-show {
         visibility: visible;
         -webkit-transform: translateX(0);
-                transform: translateX(0); } }
+                transform: translateX(0); } } */
   .user-chat .chat-content {
     position: relative; }
   .user-chat.user-chat-show .chat-welcome-section {
     display: none; }
-  @media (min-width: 992px) {
+  /* @media (min-width: 992px) {
     .user-chat.user-chat-show .chat-content {
       display: -webkit-box !important;
       display: -ms-flexbox !important;
-      display: flex !important; } }
+      display: flex !important; } } */
 
 .chat-welcome-section {
   display: -webkit-box;

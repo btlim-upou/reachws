@@ -5,10 +5,10 @@
 <div class="layout-wrapper d-lg-flex">
 
     <!-- Main Navigation Menu -->
-    @include('components.navbar.main')
+    {{-- @include('components.navbar.main') --}}
 
     <!-- Inner Navbar -->
-    @include('components.navbar.inner')
+    {{-- @include('components.navbar.inner') --}}
 
     <!-- Main Chat -->
     <div class="user-chat w-100 overflow-hidden">
