@@ -37,6 +37,7 @@ Route::post('/api/update-password', [UserController::class, 'updatePassword'])->
 Route::post('/api/create-room', [RoomController::class, 'createRoom'])->name('create-room');
 Route::post('/api/add-room-member', [RoomController::class, 'addmember'])->name('add-room-member');
 Route::post('/send-message', [RoomController::class, 'sendMessage'])->name('send-message');
+Route::post('/send-file', [RoomController::class, 'sendFile'])->name('send-file');
 Route::post('/typing-status', [RoomController::class, 'typingStatus'])->name('typing-status');
 
 // Route::post('/send-websocket', function(Request $request){

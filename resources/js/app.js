@@ -140,3 +140,55 @@ window.Echo.channel('reachat.link')
         }
         chat_feedback.className = "chat-input-feedback";
     });
+
+window.Echo.channel('reachat.link')
+.listen('.file-sent', (e) => {
+    console.log(e);
+
+    if(room_id_value == e.room_id) {
+        if(user_id_value != e.sender) {
+            new_message = `
+            <li class="chat-list left" id="1">
+                <div class="conversation-list">
+                <div class="user-chat-content">
+                    <div class="ctext-wrap">
+                    <div class="ctext-wrap-content">
+                        <small class="text-indigo">` + e.user_info.nick_name +`</small>
+                        <i><small class="text-muted">` + e.message_date +`</small></i>
+                        <p class="mb-0 ctext-content">
+                            <a href="${e.file}"><img src="${e.file}" width="300" height="200" alt="${e.file}"></a>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </li>`;
+
+        } else {
+            new_message = `
+            <li class="chat-list right" id="1">
+                <div class="conversation-list">
+                <div class="user-chat-content">
+                    <div class="ctext-wrap">
+                    <div class="ctext-wrap-content">
+                        <small>` + e.user_info.nick_name +`</small>
+                        <i><small class="text-muted">` + e.message_date +`</small></i>
+                        <p class="mb-0 ctext-content">
+                            <a href="${e.file}"><img src="${e.file}" width="300" height="200" alt="${e.file}"></a>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </li>`;
+        }
+
+        $("#users-conversation").append(new_message);
+        $("#chat-conversation .simplebar-content-wrapper").scrollTop($("#chat-conversation .simplebar-content-wrapper").prop("scrollHeight"));
+
+    }
+    if(room_id_value == e.room_id && user_id_value == e.sender) {
+        message_input.value = '';
+    }
+    chat_feedback.className = "chat-input-feedback";
+});

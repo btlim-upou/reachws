@@ -2203,6 +2203,19 @@ message_input.addEventListener('keyup', function (e) {
     axios(_options);
   }
 });
+window.Echo.channel('reachat.link').subscribe('.', function (e) {
+  console.log(e);
+
+  if (room_id_value == e.room_id && user_id_value != e.user_id) {
+    if (e.typing === true) {
+      var status_message = "<i>" + e.user + " is typing...</i>";
+      chat_feedback.innerHTML = status_message;
+      chat_feedback.className = "chat-input-feedback show";
+    } else {
+      chat_feedback.className = "chat-input-feedback";
+    }
+  }
+});
 window.Echo.channel('reachat.link').listen('.typing-status', function (e) {
   console.log(e);
 
@@ -2242,6 +2255,26 @@ window.Echo.channel('reachat.link').listen('.message-sent', function (e) {
       new_message = "\n                <li class=\"chat-list left\" id=\"1\">\n                    <div class=\"conversation-list\">\n                    <div class=\"user-chat-content\">\n                        <div class=\"ctext-wrap\">\n                        <div class=\"ctext-wrap-content\">\n                            <small class=\"text-indigo\">" + e.user_info.nick_name + "</small>\n                            <i><small class=\"text-muted\">" + e.message_date + "</small></i>\n                            <p class=\"mb-0 ctext-content\">" + e.message + "</p>\n                        </div>\n                        </div>\n                    </div>\n                    </div>\n                </li>";
     } else {
       new_message = "\n                <li class=\"chat-list right\" id=\"1\">\n                    <div class=\"conversation-list\">\n                    <div class=\"user-chat-content\">\n                        <div class=\"ctext-wrap\">\n                        <div class=\"ctext-wrap-content\">\n                            <small>" + e.user_info.nick_name + "</small>\n                            <i><small class=\"text-muted\">" + e.message_date + "</small></i>\n                            <p class=\"mb-0 ctext-content\">" + e.message + "</p>\n                        </div>\n                        </div>\n                    </div>\n                    </div>\n                </li>";
+    }
+
+    $("#users-conversation").append(new_message);
+    $("#chat-conversation .simplebar-content-wrapper").scrollTop($("#chat-conversation .simplebar-content-wrapper").prop("scrollHeight"));
+  }
+
+  if (room_id_value == e.room_id && user_id_value == e.sender) {
+    message_input.value = '';
+  }
+
+  chat_feedback.className = "chat-input-feedback";
+});
+window.Echo.channel('reachat.link').listen('.file-sent', function (e) {
+  console.log(e);
+
+  if (room_id_value == e.room_id) {
+    if (user_id_value != e.sender) {
+      new_message = "\n            <li class=\"chat-list left\" id=\"1\">\n                <div class=\"conversation-list\">\n                <div class=\"user-chat-content\">\n                    <div class=\"ctext-wrap\">\n                    <div class=\"ctext-wrap-content\">\n                        <small class=\"text-indigo\">" + e.user_info.nick_name + "</small>\n                        <i><small class=\"text-muted\">" + e.message_date + "</small></i>\n                        <p class=\"mb-0 ctext-content\">\n                            <a href=\"".concat(e.file, "\"><img src=\"").concat(e.file, "\" width=\"300\" height=\"200\" alt=\"").concat(e.file, "\"></a>\n                        </p>\n                    </div>\n                    </div>\n                </div>\n                </div>\n            </li>");
+    } else {
+      new_message = "\n            <li class=\"chat-list right\" id=\"1\">\n                <div class=\"conversation-list\">\n                <div class=\"user-chat-content\">\n                    <div class=\"ctext-wrap\">\n                    <div class=\"ctext-wrap-content\">\n                        <small>" + e.user_info.nick_name + "</small>\n                        <i><small class=\"text-muted\">" + e.message_date + "</small></i>\n                        <p class=\"mb-0 ctext-content\">\n                            <a href=\"".concat(e.file, "\"><img src=\"").concat(e.file, "\" width=\"300\" height=\"200\" alt=\"").concat(e.file, "\"></a>\n                        </p>\n                    </div>\n                    </div>\n                </div>\n                </div>\n            </li>");
     }
 
     $("#users-conversation").append(new_message);

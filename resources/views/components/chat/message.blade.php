@@ -53,7 +53,13 @@
                             <div class="ctext-wrap-content">
                               <small class="text-indigo">{{ $msg->nick_name }}</small>
                               <i><small class="text-muted">{{ $msg->created_at }}</small></i>
-                              <p class="mb-0 ctext-content">{{ $msg->message }}</p>
+                                @if($msg->message == "<<FILE>>")
+                                    <p class="mb-0 ctext-content">
+                                        <a href="{{ $msg->attachment }}"><img src="{{ $msg->attachment }}" width="300" height="200"></a>
+                                    </p>
+                                @else 
+                                    <p class="mb-0 ctext-content">{{ $msg->message }}</p>
+                                @endif
                             </div>
 {{--                      <div class="dropdown align-self-start message-box-drop">--}}
 {{--                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
@@ -82,7 +88,14 @@
                                     <div class="ctext-wrap-content">
                                         <small>{{ $msg->nick_name }}</small>
                                         <i><small class="text-muted">{{ $msg->created_at }}</small></i>
-                                        <p class="mb-0 ctext-content">{{ $msg->message }}</p>
+                                        {{-- <p class="mb-0 ctext-content">{{ $msg->message }}</p> --}}
+                                        @if($msg->message == "<<FILE>>")
+                                            <p class="mb-0 ctext-content">
+                                                <a href="{{ $msg->attachment }}"><img src="{{ $msg->attachment }}" width="300" height="200"></a>
+                                            </p>
+                                        @else 
+                                            <p class="mb-0 ctext-content">{{ $msg->message }}</p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

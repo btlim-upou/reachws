@@ -18,7 +18,7 @@ source reachdb.sql
 
 DB_HOST=localhost
 DB_PORT=3306
-DB_DATABASE=reachdb207
+DB_DATABASE=reachdb
 DB_USERNAME=username_here
 DB_PASSWORD=password_here
 

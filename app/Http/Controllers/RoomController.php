@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Events\MessageSent;
+use App\Events\FileSent;
 use Session;
 use Carbon\Carbon;
 
@@ -61,6 +62,52 @@ class RoomController extends Controller
         $message->sent_by = $user_id;
         $message->message = $request->message;
         $message->attachment = '';
+        $message->status_id = 1;
+        $message->created_at = $dt;
+        $message->updated_at = $dt;
+
+        $res = $message->save();
+
+        // event(new MessageSent($message, $sender));
+        // broadcast(new MessageSent($message, $sender));
+        // if($res){
+        //     // return back()->with('success', 'Message sent successfully');
+        //     return ["success" => true];
+        // } else {
+        //     // return back()->with('fail', 'Message sending failed.');
+        //     return ["success" => false];
+        // }
+
+        return ["success" => true];
+
+    }
+
+    public function sendFile(Request $request) {
+        // $request->validate([
+        //     'message'=>'required',
+        // ]);
+        $dt = Carbon::now()->toDateTimeLocalString();
+        $user_id = $request->input('user_id');
+        $room_id = $request->input('room_id');
+        $message = $request->input('message');
+        $file = $request->input('file');
+        $user_info = DB::table('User')->where('id', $user_id)->select('id','nick_name','first_name','last_name')->first();
+        $message_date = $dt;
+        event(
+            new FileSent(
+                $message,
+                $message_date,
+                $user_id,
+                $room_id,
+                $user_info,
+                $file
+            )
+            );
+        $message = new Message;
+        $message->room_id = $room_id;
+        $message->sent_by = $user_id;
+        $message->message = $request->message;
+        $message->attachment = $file;
         $message->status_id = 1;
         $message->created_at = $dt;
         $message->updated_at = $dt;
