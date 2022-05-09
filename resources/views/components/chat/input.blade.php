@@ -19,7 +19,7 @@
                 </div>
                 <div id="display_image" class="d-none"></div>
                 <div id="div_attach" class="div_attach d-none">
-                    <input type="file" id="inp_file_attach">
+                    <input type="file" id="inp_file_attach" accept="image/*">
                     <button id="btn_del_attach" type="button" class="btn btn-danger btn-sm">
                         <i class="bx bx-trash align-middle"></i>
                     </button>
@@ -146,41 +146,44 @@
     }
 
     async function saveFile(){
-        let formData = new FormData();
-        let file =  inp_attach.files[0];
-        var date = new Date();
-        console.log(file.name);
-        var datestring = date.getFullYear()+
-          "_"+(date.getMonth()+1)+
-          "_"+date.getDate()+
-          "-"+date.getHours()+
-          "_"+date.getMinutes()+
-          "_"+date.getSeconds();
-        let newFilename = datestring + "-" + file.name;
-        
-        // formData.append("file", inp_attach.files[0]);
-        formData.append("file",file, newFilename);
+        if (inp_attach.files[0]) {
 
-        // console.log(file);
-        // console.log(newFilename);
-        await fetch('/assets/php/upload.php', {method: "POST", body: formData})
-        // .then(response => response.json())
-        .then(data => console.log(data));
+            let formData = new FormData();
+            let file =  inp_attach.files[0];
+            var date = new Date();
+            console.log(file.name);
+            var datestring = date.getFullYear()+
+            "_"+(date.getMonth()+1)+
+            "_"+date.getDate()+
+            "-"+date.getHours()+
+            "_"+date.getMinutes()+
+            "_"+date.getSeconds();
+            let newFilename = datestring + "-" + file.name;
+            
+            // formData.append("file", inp_attach.files[0]);
+            formData.append("file",file, newFilename);
 
-        hide_attachment_controls();
+            // console.log(file);
+            // console.log(newFilename);
+            await fetch('/assets/php/upload.php', {method: "POST", body: formData})
+            // .then(response => response.json())
+            .then(data => console.log(data));
 
-        const options = {
-        method: 'post',
-        url: '/send-file',
-        data: {
-            user_id: user_id_value,
-            room_id: room_id_value,
-            message: '<<FILE>>',
-            file: '/storage/attachments/' + newFilename,
+            hide_attachment_controls();
+
+            const options = {
+            method: 'post',
+            url: '/send-file',
+            data: {
+                user_id: user_id_value,
+                room_id: room_id_value,
+                message: '<<FILE>>',
+                file: '/storage/attachments/' + newFilename,
+                }
+            }
+
+            axios(options);
         }
-    }
-
-    axios(options);
     }
 
     

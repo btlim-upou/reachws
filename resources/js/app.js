@@ -156,7 +156,7 @@ window.Echo.channel('reachat.link')
                         <small class="text-indigo">` + e.user_info.nick_name +`</small>
                         <i><small class="text-muted">` + e.message_date +`</small></i>
                         <p class="mb-0 ctext-content">
-                            <a href="${e.file}"><img src="${e.file}" width="300" height="200" alt="${e.file}"></a>
+                            <img src="${e.file}" width="300" height="200" alt="${e.file}">
                         </p>
                     </div>
                     </div>
@@ -174,7 +174,7 @@ window.Echo.channel('reachat.link')
                         <small>` + e.user_info.nick_name +`</small>
                         <i><small class="text-muted">` + e.message_date +`</small></i>
                         <p class="mb-0 ctext-content">
-                            <a href="${e.file}"><img src="${e.file}" width="300" height="200" alt="${e.file}"></a>
+                            <img src="${e.file}" width="300" height="200" alt="${e.file}">
                         </p>
                     </div>
                     </div>

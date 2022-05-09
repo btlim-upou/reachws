@@ -55,7 +55,7 @@
                               <i><small class="text-muted">{{ $msg->created_at }}</small></i>
                                 @if($msg->message == "<<FILE>>")
                                     <p class="mb-0 ctext-content">
-                                        <a href="{{ $msg->attachment }}"><img src="{{ $msg->attachment }}" width="300" height="200"></a>
+                                        <img src="{{ $msg->attachment }}" width="300" height="200">
                                     </p>
                                 @else 
                                     <p class="mb-0 ctext-content">{{ $msg->message }}</p>
@@ -91,7 +91,7 @@
                                         {{-- <p class="mb-0 ctext-content">{{ $msg->message }}</p> --}}
                                         @if($msg->message == "<<FILE>>")
                                             <p class="mb-0 ctext-content">
-                                                <a href="{{ $msg->attachment }}"><img src="{{ $msg->attachment }}" width="300" height="200"></a>
+                                                <img src="{{ $msg->attachment }}" width="300" height="200">
                                             </p>
                                         @else 
                                             <p class="mb-0 ctext-content">{{ $msg->message }}</p>
